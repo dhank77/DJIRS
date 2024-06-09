@@ -1,19 +1,15 @@
 {% load django_vite %}
+{% load vite_tags %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="csrf-token" content="123-456" >
+    <meta name="csrf-token" content="" >
     <title>DJIRS</title>
     {% vite_hmr_client %}
-    <script type="module" >
-        import RefreshRuntime from 'http://127.0.0.1:5173/static/@react-refresh'
-        RefreshRuntime.injectIntoGlobalHook(window)
-        window.$RefreshReg$ = () => {}
-        window.$RefreshSig$ = () => (type) => type
-        window.__vite_plugin_react_preamble_installed__ = true
-    </script>     
+    {% vite_react_refresh %}
     {% vite_asset 'resources/js/app.jsx' %}
 </head>
 <body>

@@ -66,6 +66,9 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
+            'libraries':{
+                'vite_tags': 'djirs.templatetags.vite_tags',
+            }
         },
     },
 ]
@@ -130,6 +133,9 @@ STATIC_FILEDIR = [DJANGO_VITE_ASSETS_PATH]
 
 CSRF_HEADER_NAME = 'HTTP_X_XSRF_TOKEN'
 CSRF_COOKIE_NAME = 'XSRF-TOKEN'
+
+VITE_HOST = '127.0.0.1'
+VITE_PORT = 5173
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
