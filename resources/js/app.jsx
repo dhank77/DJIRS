@@ -1,9 +1,11 @@
+import '../css/app.css'
+
 import React from "react";
 import { createRoot, hydrateRoot } from "react-dom/client";
 import { createInertiaApp } from "@inertiajs/react";
 import axios from "axios";
 
-const pages = import.meta.glob("../pages/*.jsx");
+const pages = import.meta.glob("./pages/**/*.jsx");
 
 document.addEventListener("DOMContentLoaded", () => {
   const csrfToken = document.querySelector("meta[name=csrf-token]").content;
@@ -11,7 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   createInertiaApp({
     resolve: async (name) => {
-      const page = (await pages[`../pages/${name}.jsx`]()).default;
+      const page = (await pages[`./pages/${name}.jsx`]()).default;
 
       return page;
     },

@@ -2,12 +2,13 @@
 {% load vite_tags %}
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="" >
     <title>DJIRS</title>
+
     {% vite_hmr_client %}
     {% vite_react_refresh %}
     {% vite_asset 'resources/js/app.jsx' %}
