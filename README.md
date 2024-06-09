@@ -1,3 +1,3 @@
-# DJIRS - DJIRS - Django Inertia React Shadcn
+# DJIRS - Django Inertia React Shadcn
 
 
