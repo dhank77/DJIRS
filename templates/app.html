@@ -1,5 +1,4 @@
 {% load django_vite %}
-{% load vite_tags %}
 
 <!DOCTYPE html>
 <html lang="en" class="dark">
@@ -10,8 +9,11 @@
     <title>DJIRS</title>
 
     {% vite_hmr_client %}
-    {% vite_react_refresh %}
     {% vite_asset 'resources/js/app.jsx' %}
+    {% vite_asset 'resources/js/app.css' %}
+    {% vite_react_refresh %}
+
+    
 </head>
 <body>
     {% block inertia %}{% endblock %}

@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'inertia',
     'django_vite',
-    'admin'
+    'admin.apps.AdminConfig'
 ]
 
 MIDDLEWARE = [
