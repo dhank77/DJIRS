@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Link, router } from "@inertiajs/react";
+import { Link, router, usePage } from "@inertiajs/react";
 import { useState } from "react";
 
 export default function Login() {
@@ -16,7 +16,11 @@ export default function Login() {
 
   function onSubmit(e) {
     e.preventDefault();
-    router.post("/login", values);
+    router.post("/login", values ,{
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
   }
 
   return (
@@ -35,7 +39,7 @@ export default function Login() {
                 <Label htmlFor="email">Email</Label>
                 <Input
                   id="email"
-                  type="email"
+                  type="text"
                   name="email"
                   placeholder="m@example.com"
                   onChange={changeValue}
@@ -58,11 +62,12 @@ export default function Login() {
                   type="password"
                   name="password"
                   required
+                  placeholder="Password"
                   onChange={changeValue}
                   value={values.password}
                 />
               </div>
-              <Button type="submit" className="w-full">
+              <Button type="submit" className="w-full mt-2">
                 Login
               </Button>
             </form>
