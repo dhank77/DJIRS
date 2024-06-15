@@ -10,6 +10,10 @@ def inertia_share(get_response):
             app_name=settings.APP_NAME,
             user_count=lambda: AuthUser.objects.count(),
             user=lambda: request.user if request.user.is_authenticated else None,
+            flash = {
+                'type' : '',
+                'messages' : '',
+            }
         )
         response = get_response(request)
         return response

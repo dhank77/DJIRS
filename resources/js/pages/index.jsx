@@ -6,9 +6,11 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
-import { Link } from "@inertiajs/react"
+import { Link, usePage } from "@inertiajs/react"
 
 export default function Index() {
+  const pr = usePage().props
+
   return (
     <div className="h-screen grid place-content-center">
       <Card className="w-full max-w-xl shadow-lg">
