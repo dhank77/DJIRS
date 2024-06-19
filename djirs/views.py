@@ -27,7 +27,7 @@ def login_view(request) :
             else : 
                 return render(request, 'auth/login', props={
                     'errors' : {
-                        'email' : 'User and password is wrong!'
+                        'username' : 'User and password is wrong!'
                     }
                 })
         else :
