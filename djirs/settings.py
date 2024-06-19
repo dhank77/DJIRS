@@ -130,11 +130,12 @@ DJANGO_VITE_DEV_MODE = DEBUG
 STATIC_ROOT = BASE_DIR/"collectstatic"
 STATIC_FILEDIR = [DJANGO_VITE_ASSETS_PATH]
 
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / "media"
+
 CSRF_HEADER_NAME = 'HTTP_X_XSRF_TOKEN'
 CSRF_COOKIE_NAME = 'XSRF-TOKEN'
 
-VITE_HOST = '127.0.0.1'
-VITE_PORT = 5173
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 

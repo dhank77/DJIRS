@@ -12,7 +12,7 @@ export default function Login(props) {
 
   const { errors } = props
   const [values, setValues] = useState({
-    email: "",
+    username: "",
     password: "",
   });
 
@@ -35,23 +35,23 @@ export default function Login(props) {
             <div className="grid gap-2 text-center">
               <h1 className="text-3xl font-bold">Login</h1>
               <p className="text-balance text-muted-foreground">
-                Enter your email below to login to your account
+                Enter your username below to login to your account
               </p>
             </div>
             <div className="grid gap-4">
               <form onSubmit={onSubmit}>
                 <div className="grid gap-2 mb-2">
-                  <Label htmlFor="email">Email</Label>
+                  <Label htmlFor="username">Username</Label>
                   <Input
-                    id="email"
+                    id="username"
                     type="text"
-                    name="email"
+                    name="username"
                     placeholder="m@example.com"
                     onChange={changeValue}
-                    value={values.email}
+                    value={values.username}
                     required
                   />
-                  {errors?.email && ( <div className="text-red-500"> {errors.email} </div> )}
+                  {errors?.username && ( <div className="text-red-500"> {errors.username} </div> )}
                 </div>
                 <div className="grid gap-2">
                   <div className="flex items-center">
@@ -75,7 +75,7 @@ export default function Login(props) {
 
                   {errors?.password && ( <div className="text-red-500"> {errors.password} </div> )}
                 </div>
-                <Button type="submit" className="w-full mt-2">
+                <Button type="submit" className="w-full mt-8">
                   Login
                 </Button>
               </form>
@@ -90,11 +90,10 @@ export default function Login(props) {
         </div>
         <div className="hidden bg-muted lg:block">
           <img
-            src="https://picsum.photos/200"
+            src="/media/django.jpg"
             alt="Image"
             width="1920"
-            height="1080"
-            className="h-full w-full object-cover dark:brightness-[0.2] dark:grayscale"
+            className="h-screen w-full object-cover dark:brightness-[0.2] dark:grayscale"
           />
         </div>
       </div>
