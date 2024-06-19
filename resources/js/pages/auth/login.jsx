@@ -10,8 +10,7 @@ import { toast } from "sonner"
 
 export default function Login(props) {
 
-  const { messages } = props
-
+  const { errors } = props
   const [values, setValues] = useState({
     email: "",
     password: "",
@@ -22,17 +21,8 @@ export default function Login(props) {
   };
 
   function onSubmit(e) {
-    messages &&
-      toast(messages)
     e.preventDefault();
-    router.post("/login", values ,{
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      onError : (errors) => {
-        console.log(errors);
-      }
-    });
+    router.post("/login", values);
   }
 
   return (
@@ -50,7 +40,7 @@ export default function Login(props) {
             </div>
             <div className="grid gap-4">
               <form onSubmit={onSubmit}>
-                <div className="grid gap-2">
+                <div className="grid gap-2 mb-2">
                   <Label htmlFor="email">Email</Label>
                   <Input
                     id="email"
@@ -61,6 +51,7 @@ export default function Login(props) {
                     value={values.email}
                     required
                   />
+                  {errors?.email && ( <div className="text-red-500"> {errors.email} </div> )}
                 </div>
                 <div className="grid gap-2">
                   <div className="flex items-center">
@@ -81,6 +72,8 @@ export default function Login(props) {
                     onChange={changeValue}
                     value={values.password}
                   />
+
+                  {errors?.password && ( <div className="text-red-500"> {errors.password} </div> )}
                 </div>
                 <Button type="submit" className="w-full mt-2">
                   Login
