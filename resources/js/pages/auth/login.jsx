@@ -3,7 +3,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Link, router } from "@inertiajs/react";
 import { useState } from "react";
-import Guest from "../layouts/guest";
+import Guest from "../../layouts/guest";
 
 export default function Login(props) {
   const { errors } = props;

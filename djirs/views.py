@@ -2,7 +2,8 @@ from inertia import render
 from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import redirect
 import json
-from .validation import LoginValidation
+from .validation import LoginValidation, RegisterForm
+
 
 def index(request) :
     return render(request, 'index')
@@ -13,14 +14,13 @@ def login_view(request) :
 
     if request.method == 'POST' :
         data = json.loads(request.body)
-        seriz = LoginValidation(data=data)
+        form = LoginValidation(data=data)
 
-        if seriz.is_valid():
+        if form.is_valid():
             username = data.get('username')
             password = data.get('password')
             
             user = authenticate(request, username=username, password=password)
-            print(user)
             if user is not None:
                 login(request, user)
                 return redirect('/admin')
@@ -32,10 +32,35 @@ def login_view(request) :
                 })
         else :
             return render(request, 'auth/login', props={
-                'errors' : seriz.errors
+                'errors' : form.errors
             })
     else :
         return render(request, 'auth/login')
+
+def register_view(request) :
+    if request.method == 'POST' :
+        data = json.loads(request.body)
+        form = RegisterForm(data=data)
+
+        if form.is_valid() :
+            form.save()
+            password = data.get('password')
+            user = authenticate(request, username=form.data['username'], password=password)
+            if user is not None:
+                login(request, user)
+                return redirect('/admin')
+            else :
+                return render(request, 'auth/register', props={
+                    'errors' : {
+                        'username': '500 server error'
+                    }
+                })
+        else :
+            return render(request, 'auth/register', props={
+                'errors' : form.errors
+            })
+    else :
+        return render(request, 'auth/register')
 
 def logout_view(request) : 
     logout(request)
