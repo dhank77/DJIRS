@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'inertia',
     'django_vite',
-    'admin.apps.AdminConfig'
+    'admin.apps.AdminConfig',
+    'django_dump_die',
 ]
 
 MIDDLEWARE = [
@@ -52,6 +53,8 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'inertia.middleware.InertiaMiddleware',
     'djirs.middleware.inertia_share',
+    'django_dump_die.middleware.DumpAndDieMiddleware',
+
 ]
 
 ROOT_URLCONF = 'djirs.urls'

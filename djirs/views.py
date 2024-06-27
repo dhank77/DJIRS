@@ -1,9 +1,8 @@
 from inertia import render
 from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import redirect
-import json
 from .validation import LoginValidation, RegisterForm
-
+import json
 
 def index(request) :
     return render(request, 'index')
