@@ -11,6 +11,10 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+import environ
+
+env = environ.Env()
+environ.Env.read_env('.env')
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,7 +24,7 @@ APP_NAME = 'DJIRS'
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-@2)!w!%w!@^=^@zlw^ts&8u@%hqm_i_lxh#u#y$s+drv_u-bt='
+SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -82,10 +86,21 @@ WSGI_APPLICATION = 'djirs.wsgi.application'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
+    # sqlite3
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': env("DB_ENGINE", default="django.db.backends.sqlite3"),
+        'NAME': BASE_DIR / env("DB_DATABASE", default="db.sqlite3"),
     }
+
+    # pgsql / mysql
+    # 'default': {
+    #     'ENGINE': env("DB_ENGINE"),
+    #     'NAME': env("DB_DATABASE"), 
+    #     'USER': env("DB_USERNAME"),
+    #     'PASSWORD': env("DB_PASSWORD"),
+    #     'HOST': env("DB_HOST"),
+    #     'PORT': env("DB_PORT"),
+    # }
 }
 
 
