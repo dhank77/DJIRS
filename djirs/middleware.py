@@ -8,12 +8,12 @@ def inertia_share(get_response):
     def middleware(request):
         share(request, 
             app_name=settings.APP_NAME,
-            user_count=lambda: AuthUser.objects.count(),
             user=lambda: request.user if request.user.is_authenticated else None,
+            path=request.path,
             flash = {
-                'type' : '',
-                'messages' : '',
-            }
+                'type' : request.session.pop('type', ""),
+                'messages' : request.session.pop('messages', ""),
+            } 
         )
         response = get_response(request)
         return response

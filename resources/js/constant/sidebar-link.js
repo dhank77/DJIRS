@@ -14,6 +14,6 @@ export const sidebarLink = [
   {
     imageIcon : Settings,
     route : '/admin/change-password/',
-    label : 'Change Password'
+    label : 'Manage Password'
   },
 ]
