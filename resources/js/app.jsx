@@ -1,6 +1,5 @@
 import '../css/app.css'
 
-import React from "react";
 import { createRoot, hydrateRoot } from "react-dom/client";
 import { createInertiaApp } from "@inertiajs/react";
 import axios from "axios";
@@ -14,7 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
   createInertiaApp({
     resolve: async (name) => {
       const page = (await pages[`./pages/${name}.jsx`]()).default;
-
+      
       return page;
     },
     setup({ el, App, props }) {
